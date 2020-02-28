@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}
+    个人博客模板古典系列之――江南墨卷
+{% endblock %}
+{% block content %}
+      <div class="jztop"></div>
+  <div class="container">
+    <div class="bloglist f_l">
+      {% for one in article %}
+        <h3><a href="/articleblog/articleinfo/{{ one.id }}/">{{ one.title }}</a></h3>
+      <figure><img src="/static/images/img_1.jpg" alt="{{ one.title }}"></figure>
+      <ul>
+        <p> {{ one.description | safe }}</p>
+        <a title="【心路历程】请不要在设计这条路上徘徊啦" href="/articleblog/articleinfo/{{ one.id }}/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+      </ul>
+      <p class="dateview"><span>{{ one.date | date:"Y-m-d" }}</span><span>作者：{{ one.author.name }}</span><span>个人博客：[<a href="/jstt/bj/">{{ one.type.first }}</a>]</span></p>
+    {% endfor %}
+    </div>
+    <div class="r_box f_r">
+      <div class="tit01">
+        <h3 class="tit">关注我</h3>
+        <div class="gzwm">
+          <ul>
+            <li><a class="email" href="#" target="_blank">我的电话</a></li>
+            <li><a class="qq" href="#mailto:admin@admin.com" target="_blank">我的邮箱</a></li>
+            <li><a class="tel" href="#" target="_blank">我的QQ</a></li>
+            <li><a class="prize" href="#">个人奖项</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--tit01 end-->
+
+      <div class="tuwen">
+        <h3 class="tit">图文推荐</h3>
+        <ul>
+            {% for one in recommend_article %}
+          <li><a href="/"><img src="/static/{{ one.picture }}"><b>{{ one.title }}</b></a>
+            <p><span class="tulanmu"><a href="/">{{ one.type.first }}</a></span><span class="tutime">{{ one.date | date:"y-m-d" }}</span></p>
+          </li>
+            {% endfor %}
+
+        </ul>
+      </div>
+      <div class="ph">
+        <h3 class="tit">点击排行</h3>
+        <ul class="rank">
+            {% for one in click_article %}
+          <li><a href="/articleblog/articleinfo/{{ one.id }}/" title="{{ one.title }}" target="_blank">{{ one.title }}</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+      <div class="ad"> <img src="/static/images/03.jpg"> </div>
+    </div>
+  </div>
+  <!-- container代码 结束 -->
+  <div class="jzend"></div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    账号:<input id="username" type="text" name="username"><br>
+    密码:<input id="password" type="password" name="password"><br>
+    <input id="btn" type="submit" value="注册"><br>
+</form>
+{{ message }}
+
+<script>
+    {#$('#username').blur(#}
+    {#    function () {#}
+    {#        var username = $('#username').val(); //获取用户输入的账号内容#}
+    {#        var url = 'http://127.0.0.1:8000/articleblog/ajax_get_req/?username='+username;#}
+    {#        $.ajax({#}
+    {#            url:url,//ajax请求的地址#}
+    {#            type:"get",//请求的方式 get post#}
+    {#            data:'',//请求的数据  常与post请求的时候传参，get请求的时候参数需要构建在url上即可#}
+    {#            success:function (data) {#}
+    {#                console.log(data);#}
+    {#                //代表 请求成功被服务器处理了之后回调的方法#}
+    {#                //data 代表 服务器处理之后的返回值#}
+    {#                $('#spancontent').text(data['msg']);#}
+    {#            },#}
+    {#            error:function (error) {#}
+    {#                //请求失败后的方法#}
+    {#                //error 代表错误的内容#}
+    {#                console.log(error);#}
+    {#            }#}
+    {#        })#}
+    {#    }#}
+    {#);#}
+    {##}
+    {#$('#btn').click(#}
+    {#    function () {#}
+    {#        var username = $('#username').val();#}
+    {#        var password = $('#password').val();#}
+    {#        var url = 'http://127.0.0.1:8000/articleblog/ajax_post_req/';#}
+    {#        var send_data = {#}
+    {#            'username':username,#}
+    {#            'password':password,#}
+    {#            'csrfmiddlewaretoken':'{{ csrf_token }}'#}
+    {#        };#}
+    {#        $.ajax({#}
+    {#            url:url,#}
+    {#            type:'post',#}
+    {#            data:send_data,#}
+    {#            success:function (data) {#}
+    {#                console.log(data);#}
+    {#                $('#content').text(data['msg']);#}
+    {#            },#}
+    {#            error:function (error) {#}
+    {#                console.log(error);#}
+    {#            }#}
+    {#        })#}
+    {#    }#}
+    {#)#}
+</script>
+
+</body>
+</html>
